@@ -55,7 +55,7 @@ void UStudentPerceptor::OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 		if (ABaseItem* Item = Cast<ABaseItem>(Actor))
 		{
 			GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Orange,
-				FString::Printf(TEXT("Saw item!")));
+			FString::Printf(TEXT("Saw item!")));
 			blackBoard->SetValueAsObject(FName("Item"), Item);
 		}
 		
