@@ -1,6 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 #pragma once
+#include <vector>
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
@@ -8,7 +9,9 @@
 #include "Perception/AISenseConfig_Sight.h"
 #include "Perception/AISenseConfig_Damage.h"
 #include "Perception/AISense_Damage.h"
+#include "Village/House/House.h"
 #include "StudentPerceptor.generated.h"
+
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class DEVOSYELTOZOMBIERUNTIME_API UStudentPerceptor : public UActorComponent
@@ -23,4 +26,6 @@ public:
 
 	UFUNCTION()
 	virtual void OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus);
+	
+	std::vector<AHouse*> VisitedHouses{};
 };
