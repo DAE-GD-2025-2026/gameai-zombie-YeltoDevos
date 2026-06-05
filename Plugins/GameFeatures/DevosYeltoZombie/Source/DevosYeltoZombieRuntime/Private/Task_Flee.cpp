@@ -14,7 +14,5 @@ EBTNodeResult::Type UTask_Flee::ExecuteTask(UBehaviorTreeComponent& OwnerComp, u
 		Blackboard->SetValueAsObject("WanderLocation", Value);
 	}
 	
-	
-	
 	return EBTNodeResult::Succeeded;
 }

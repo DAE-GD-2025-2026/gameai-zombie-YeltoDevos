@@ -19,7 +19,7 @@ public:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float radius;
 	
-	UPROPERTY(EditAnywhere, Category = "Blackboard") //ley's you add keys in the bt, so reusable with different ones!
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
 	FBlackboardKeySelector BlackBoardKey;
 	
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
