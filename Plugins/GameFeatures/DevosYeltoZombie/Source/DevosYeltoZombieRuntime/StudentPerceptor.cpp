@@ -97,5 +97,12 @@ void UStudentPerceptor::OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 			FString::Printf(TEXT("Saw Garbage!")));
 			blackBoard->SetValueAsObject(FName("Garbage"), Item);
 		}
+		
+		FAISenseID DamageSenseID = UAISense::GetSenseID<UAISense_Damage>();
+		if (Stimulus.Type == DamageSenseID)
+		{
+			GEngine->AddOnScreenDebugMessage(5, 1.f, FColor::Red, 
+			FString::Printf(TEXT("Sensing Damage")));
+		}
 	}
 }

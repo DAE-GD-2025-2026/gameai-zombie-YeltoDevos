@@ -53,7 +53,7 @@ EBTNodeResult::Type UTask_PickUpItem::ExecuteTask(UBehaviorTreeComponent& OwnerC
 
 	if (InventoryComponent->GrabItem(slotIdx, Cast<ABaseItem>(ItemObject)))
 	{
-		Blackboard->SetValueAsObject(ItemKey.SelectedKeyName, nullptr);
+		//Blackboard->SetValueAsObject(ItemKey.SelectedKeyName, nullptr);
 		return EBTNodeResult::Succeeded;
 	}
 
