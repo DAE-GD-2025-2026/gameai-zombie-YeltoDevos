@@ -11,26 +11,52 @@ EBTNodeResult::Type UTask_PickUpItem::ExecuteTask(UBehaviorTreeComponent& OwnerC
 {
 	UBlackboardComponent* Blackboard = OwnerComp.GetBlackboardComponent();
 	if (!Blackboard) return EBTNodeResult::Failed;
+	
+	ASurvivorPawn* survivor = Cast<ASurvivorPawn>(OwnerComp.GetAIOwner()->GetPawn());
+	if (!survivor) return EBTNodeResult::Failed;
+	
+	UInventoryComponent* InventoryComponent = Cast<UInventoryComponent>(survivor->GetComponentByClass(UInventoryComponent::StaticClass()));
+	if (!InventoryComponent) return EBTNodeResult::Failed;
+
+	
 
 	UObject* ItemObject = Blackboard->GetValueAsObject(ItemKey.SelectedKeyName);
-	
-	Blackboard->SetValueAsObject("Item", ItemObject);
 		
-	EPathFollowingRequestResult::Type result{};
-	if (AActor* Item = Cast<AActor>(ItemObject))
+	// EPathFollowingRequestResult::Type result{};
+	// if (AActor* Item = Cast<AActor>(ItemObject))
+	// {
+	// 	  result = OwnerComp.GetAIOwner()->MoveToActor(Item);
+	// }
+	
+	int slotIdx{};
+	if (ItemKey.SelectedKeyName == "Pistol")
 	{
-		result = OwnerComp.GetAIOwner()->MoveToActor(Item);
+		slotIdx = 0;
+	}
+	else if (ItemKey.SelectedKeyName == "Shotgun")
+	{
+		slotIdx = 1;
+	}	
+	else if (ItemKey.SelectedKeyName == "Medkit")
+	{
+		slotIdx = 2;
+	}
+	else if (ItemKey.SelectedKeyName == "Food")
+	{
+		slotIdx = 3;
+	}
+	else if (ItemKey.SelectedKeyName == "Garbage")
+	{
+		slotIdx = 4;
 	}
 	
-	if (ASurvivorPawn* survivor = Cast<ASurvivorPawn>(OwnerComp.GetAIOwner()->GetPawn()))
+
+	if (InventoryComponent->GrabItem(slotIdx, Cast<ABaseItem>(ItemObject)))
 	{
-		UInventoryComponent* InventoryComponent = Cast<UInventoryComponent>(survivor->GetComponentByClass(UInventoryComponent::StaticClass()));
-		if (InventoryComponent)
-		{
-			InventoryComponent->GrabItem(1, Cast<ABaseItem>(ItemObject));
-			Blackboard->SetValueAsObject("Item", nullptr);
-		}
+		Blackboard->SetValueAsObject(ItemKey.SelectedKeyName, nullptr);
+		return EBTNodeResult::Succeeded;
 	}
+
 	
-	return EBTNodeResult::Succeeded;
+	return EBTNodeResult::Failed;
 }
