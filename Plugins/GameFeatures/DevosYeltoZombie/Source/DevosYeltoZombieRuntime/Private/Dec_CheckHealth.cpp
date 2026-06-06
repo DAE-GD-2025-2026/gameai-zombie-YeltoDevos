@@ -17,7 +17,7 @@ bool UDec_CheckHealth::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerC
 	
 	float healthpercent{ static_cast<float>(healthComp->GetHealth()) / static_cast<float>(healthComp->GetMaxHealth()) };
 	
-	if (healthpercent <= 0.3)
+	if (healthpercent <= 0.5)
 	{
 		GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Red, 
 			FString::Printf(TEXT("Health under threshold")));

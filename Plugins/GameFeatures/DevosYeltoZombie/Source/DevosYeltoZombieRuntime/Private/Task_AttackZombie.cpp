@@ -24,23 +24,27 @@ EBTNodeResult::Type UTask_AttackZombie::ExecuteTask(UBehaviorTreeComponent& Owne
 	if (!Zombie) return EBTNodeResult::Failed;
 	
 	OwnerComp.GetAIOwner()->MoveToActor(Zombie);
-	if (InventoryComponent->UseItem(0))
+	const int pistolIdx{0};
+	if (InventoryComponent->UseItem(pistolIdx))
 	{
+		CheckItemCanBeUsed(pistolIdx, InventoryComponent);
 		return EBTNodeResult::Succeeded;
-	}
-	else
-	{
-		InventoryComponent->RemoveItem(0);
 	}
 	
-	if (InventoryComponent->UseItem(1))
+	const int shotgunIdx{1};
+	if (InventoryComponent->UseItem(shotgunIdx))
 	{
+		CheckItemCanBeUsed(shotgunIdx, InventoryComponent);
 		return EBTNodeResult::Succeeded;
-	}
-	else
-	{
-		InventoryComponent->RemoveItem(1);
 	}
 	
 	return EBTNodeResult::Failed;
+}
+
+void UTask_AttackZombie::CheckItemCanBeUsed(const int itemIdx, UInventoryComponent* inventory)
+{
+	if (inventory->GetInventory()[itemIdx]->GetValue() <=0)
+	{
+		inventory->RemoveItem(itemIdx);
+	};
 }
