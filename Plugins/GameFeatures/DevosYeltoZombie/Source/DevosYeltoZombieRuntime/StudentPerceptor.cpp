@@ -101,7 +101,7 @@ void UStudentPerceptor::OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 		FAISenseID DamageSenseID = UAISense::GetSenseID<UAISense_Damage>();
 		if (Stimulus.Type == DamageSenseID)
 		{
-			GEngine->AddOnScreenDebugMessage(5, 1.f, FColor::Red, 
+			GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Red, 
 			FString::Printf(TEXT("Sensing Damage")));
 		}
 	}
