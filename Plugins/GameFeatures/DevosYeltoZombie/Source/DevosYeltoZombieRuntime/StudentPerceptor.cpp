@@ -79,30 +79,30 @@ void UStudentPerceptor::OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 		
 		if (AMedkit* Item = Cast<AMedkit>(Actor))
 		{
-			GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Orange,
+			GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Green,
 			FString::Printf(TEXT("Saw Medkit!")));
 			blackBoard->SetValueAsObject(FName("Medkit"), Item);
 		}
 		
 		if (AFood* Item = Cast<AFood>(Actor))
 		{
-			GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Orange,
+			GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Green,
 			FString::Printf(TEXT("Saw Food!")));
 			blackBoard->SetValueAsObject(FName("Food"), Item);
 		}
 		
 		if (ABaseItem* Item = Cast<ABaseItem>(Actor))
 		{
-			GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Orange,
+			GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Green,
 			FString::Printf(TEXT("Saw Garbage!")));
 			blackBoard->SetValueAsObject(FName("Garbage"), Item);
 		}
 		
-		FAISenseID DamageSenseID = UAISense::GetSenseID<UAISense_Damage>();
-		if (Stimulus.Type == DamageSenseID)
+		if (APurgeZone* PurgeZone = Cast<APurgeZone>(Actor))
 		{
-			GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Red, 
-			FString::Printf(TEXT("Sensing Damage")));
+			GEngine->AddOnScreenDebugMessage(5, 2.f, FColor::Red,
+			FString::Printf(TEXT("Saw PurgeZone!")));
+			blackBoard->SetValueAsObject(FName("PurgeZone"), PurgeZone);
 		}
 	}
 }
