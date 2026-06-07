@@ -5,13 +5,13 @@
 #include "CoreMinimal.h"
 #include "BehaviorTree/BehaviorTreeComponent.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "Task_Flee.generated.h"
+#include "Task_FleeDevosYelto.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class DEVOSYELTOZOMBIERUNTIME_API UTask_Flee : public UBTTaskNode
+class DEVOSYELTOZOMBIERUNTIME_API UTask_FleeDevosYelto : public UBTTaskNode
 {
 	GENERATED_BODY()
 	

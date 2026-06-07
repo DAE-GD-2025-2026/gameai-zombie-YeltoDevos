@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "Task_AttackZombieShotgun.generated.h"
+#include "Task_AttackZombieDevosYelto.generated.h"
 
 class UInventoryComponent;
 
@@ -12,15 +12,14 @@ class UInventoryComponent;
  * 
  */
 UCLASS()
-class DEVOSYELTOZOMBIERUNTIME_API UTask_AttackZombieShotgun : public UBTTaskNode
+class DEVOSYELTOZOMBIERUNTIME_API UTask_AttackZombieDevosYelto : public UBTTaskNode
 {
 	GENERATED_BODY()
-		
+	
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 	
 	bool CheckItemCanBeUsed(const int itemIdx, UInventoryComponent* inventory);
 	FRotator GetRotationToZombie(FVector zombieLoc);
-
 	
 public:
 	UPROPERTY(EditAnywhere, Category = "Blackboard")

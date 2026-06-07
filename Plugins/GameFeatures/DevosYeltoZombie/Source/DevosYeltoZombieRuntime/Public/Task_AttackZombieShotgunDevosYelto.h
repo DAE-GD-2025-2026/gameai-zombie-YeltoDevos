@@ -2,28 +2,27 @@
 
 #pragma once
 
-#include <vector>
-
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "Village/House/House.h"
-#include "Task_VisitHouse.generated.h"
+#include "Task_AttackZombieShotgunDevosYelto.generated.h"
+
+class UInventoryComponent;
 
 /**
  * 
  */
 UCLASS()
-class DEVOSYELTOZOMBIERUNTIME_API UTask_VisitHouse : public UBTTaskNode
+class DEVOSYELTOZOMBIERUNTIME_API UTask_AttackZombieShotgunDevosYelto : public UBTTaskNode
 {
 	GENERATED_BODY()
-	
-	std::vector<UObject*> VisitedHouses{};
-	
+		
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 	
+	bool CheckItemCanBeUsed(const int itemIdx, UInventoryComponent* inventory);
+	FRotator GetRotationToZombie(FVector zombieLoc);
+
+	
 public:
-	
 	UPROPERTY(EditAnywhere, Category = "Blackboard")
-	FBlackboardKeySelector HouseKey;
-	
+	FBlackboardKeySelector ZombieKey;
 };

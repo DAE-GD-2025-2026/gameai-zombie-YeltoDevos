@@ -1,13 +1,13 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Task_PickUpItem.h"
+#include "Task_PickUpItemDevosYelto.h"
 #include "AIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Common/InventoryComponent.h"
 #include "Navigation/PathFollowingComponent.h"
 #include "Survivor/SurvivorPawn.h"
 
-EBTNodeResult::Type UTask_PickUpItem::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+EBTNodeResult::Type UTask_PickUpItemDevosYelto::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	UBlackboardComponent* Blackboard = OwnerComp.GetBlackboardComponent();
 	if (!Blackboard) return EBTNodeResult::Failed;

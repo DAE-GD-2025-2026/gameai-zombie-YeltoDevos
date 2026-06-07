@@ -1,12 +1,12 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Task_Heal.h"
+#include "Task_HealDevosYelto.h"
 #include "AIController.h"
 #include "Survivor/SurvivorPawn.h"
 #include "Common/InventoryComponent.h"
 
-EBTNodeResult::Type UTask_Heal::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+EBTNodeResult::Type UTask_HealDevosYelto::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	ASurvivorPawn* survivor = Cast<ASurvivorPawn>(OwnerComp.GetAIOwner()->GetPawn());
 	if (!survivor) return EBTNodeResult::Failed;

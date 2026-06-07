@@ -1,7 +1,7 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Task_AttackZombieShotgun.h"
+#include "Task_AttackZombieShotgunDevosYelto.h"
 #include "AIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Common/InventoryComponent.h"
@@ -9,7 +9,7 @@
 #include "Survivor/SurvivorPawn.h"
 #include "Zombies/BaseZombie.h"
 
-EBTNodeResult::Type UTask_AttackZombieShotgun::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+EBTNodeResult::Type UTask_AttackZombieShotgunDevosYelto::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	UBlackboardComponent* Blackboard = OwnerComp.GetBlackboardComponent();
 	if (!Blackboard) return EBTNodeResult::Failed;
@@ -48,7 +48,7 @@ EBTNodeResult::Type UTask_AttackZombieShotgun::ExecuteTask(UBehaviorTreeComponen
 	return EBTNodeResult::Failed;
 }
 
-bool UTask_AttackZombieShotgun::CheckItemCanBeUsed(const int itemIdx, UInventoryComponent* inventory)
+bool UTask_AttackZombieShotgunDevosYelto::CheckItemCanBeUsed(const int itemIdx, UInventoryComponent* inventory)
 {
 	if (inventory->GetInventory()[itemIdx] == nullptr || inventory->GetInventory()[itemIdx]->GetValue() <=0)
 	{
@@ -58,7 +58,7 @@ bool UTask_AttackZombieShotgun::CheckItemCanBeUsed(const int itemIdx, UInventory
 	return true;
 }
 
-FRotator UTask_AttackZombieShotgun::GetRotationToZombie(FVector zombieLoc)
+FRotator UTask_AttackZombieShotgunDevosYelto::GetRotationToZombie(FVector zombieLoc)
 {
 	double angle{FMath::RadiansToDegrees(FMath::Atan2(zombieLoc.Y, zombieLoc.X))};
 	return FRotator{0,angle,0};

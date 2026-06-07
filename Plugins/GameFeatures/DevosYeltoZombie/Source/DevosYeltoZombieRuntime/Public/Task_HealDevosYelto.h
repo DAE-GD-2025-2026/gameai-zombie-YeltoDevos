@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTTaskNode.h"
-#include "Task_EatFood.generated.h"
+#include "Task_HealDevosYelto.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class DEVOSYELTOZOMBIERUNTIME_API UTask_EatFood : public UBTTaskNode
+class DEVOSYELTOZOMBIERUNTIME_API UTask_HealDevosYelto : public UBTTaskNode
 {
 	GENERATED_BODY()
 	

@@ -1,12 +1,12 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Task_EatFood.h"
+#include "Task_EatFoodDevosYelto.h"
 #include "AIController.h"
 #include "Survivor/SurvivorPawn.h"
 #include "Common/InventoryComponent.h"
 
-EBTNodeResult::Type UTask_EatFood::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
+EBTNodeResult::Type UTask_EatFoodDevosYelto::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
 {
 	ASurvivorPawn* survivor = Cast<ASurvivorPawn>(OwnerComp.GetAIOwner()->GetPawn());
 	if (!survivor) return EBTNodeResult::Failed;
