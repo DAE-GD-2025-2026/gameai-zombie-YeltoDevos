@@ -5,6 +5,7 @@
 
 #include "AIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
+#include "Navigation/PathFollowingComponent.h"
 #include "Survivor/SurvivorPawn.h"
 
 EBTNodeResult::Type UTask_FleeDevosYelto::ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory)
@@ -23,7 +24,10 @@ EBTNodeResult::Type UTask_FleeDevosYelto::ExecuteTask(UBehaviorTreeComponent& Ow
 	
 	FVector fleePoint{survivor->GetActorLocation() + (fleeDirection * FleeDistance)};
 	
-	OwnerComp.GetAIOwner()->MoveToLocation(fleePoint);
+	EPathFollowingRequestResult::Type result{};
+	result = OwnerComp.GetAIOwner()->MoveToLocation(fleePoint);
+	
+	if (result == EPathFollowingRequestResult::Type::Failed) return EBTNodeResult::Failed;
 	
 	return EBTNodeResult::Succeeded;
 }
