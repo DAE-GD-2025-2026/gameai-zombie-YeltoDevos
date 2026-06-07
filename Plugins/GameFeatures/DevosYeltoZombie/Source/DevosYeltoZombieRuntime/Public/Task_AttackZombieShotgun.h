@@ -18,7 +18,9 @@ class DEVOSYELTOZOMBIERUNTIME_API UTask_AttackZombieShotgun : public UBTTaskNode
 		
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 	
-	void CheckItemCanBeUsed(const int itemIdx, UInventoryComponent* inventory);
+	bool CheckItemCanBeUsed(const int itemIdx, UInventoryComponent* inventory);
+	FRotator GetRotationToZombie(FVector zombieLoc);
+
 	
 public:
 	UPROPERTY(EditAnywhere, Category = "Blackboard")

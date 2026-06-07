@@ -22,7 +22,7 @@ bool UDec_DistanceSmallerThan::CalculateRawConditionValue(UBehaviorTreeComponent
 	
 	const double distance{ (zombie->GetActorLocation() - survivor->GetActorLocation()).Length() };
 	
-	if (distance < ShotgunDistance) return true;
+	if (distance < Distance) return true;
 	
 	return false;
 }

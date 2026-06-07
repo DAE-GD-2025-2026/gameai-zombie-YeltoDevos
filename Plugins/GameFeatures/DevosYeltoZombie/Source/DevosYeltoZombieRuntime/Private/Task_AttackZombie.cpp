@@ -23,8 +23,12 @@ EBTNodeResult::Type UTask_AttackZombie::ExecuteTask(UBehaviorTreeComponent& Owne
 	ABaseZombie* Zombie = Cast<ABaseZombie>(Blackboard->GetValueAsObject(ZombieKey.SelectedKeyName));
 	if (!Zombie) return EBTNodeResult::Failed;
 	
-	OwnerComp.GetAIOwner()->MoveToActor(Zombie);
+	
 	const int pistolIdx{0};
+	if (CheckItemCanBeUsed(pistolIdx, InventoryComponent))
+	{
+		survivor->FaceRotation(GetRotationToZombie(Zombie->GetActorLocation()-survivor->GetActorLocation()));
+	}
 	if (InventoryComponent->UseItem(pistolIdx))
 	{
 		CheckItemCanBeUsed(pistolIdx, InventoryComponent);
@@ -32,6 +36,10 @@ EBTNodeResult::Type UTask_AttackZombie::ExecuteTask(UBehaviorTreeComponent& Owne
 	}
 	
 	const int shotgunIdx{1};
+	if (CheckItemCanBeUsed(shotgunIdx, InventoryComponent))
+	{
+		survivor->FaceRotation(GetRotationToZombie(Zombie->GetActorLocation()-survivor->GetActorLocation()));
+	}
 	if (InventoryComponent->UseItem(shotgunIdx))
 	{
 		CheckItemCanBeUsed(shotgunIdx, InventoryComponent);
@@ -41,10 +49,18 @@ EBTNodeResult::Type UTask_AttackZombie::ExecuteTask(UBehaviorTreeComponent& Owne
 	return EBTNodeResult::Failed;
 }
 
-void UTask_AttackZombie::CheckItemCanBeUsed(const int itemIdx, UInventoryComponent* inventory)
+bool UTask_AttackZombie::CheckItemCanBeUsed(const int itemIdx, UInventoryComponent* inventory)
 {
-	if (inventory->GetInventory()[itemIdx]->GetValue() <=0)
+	if (inventory->GetInventory()[itemIdx] == nullptr || inventory->GetInventory()[itemIdx]->GetValue() <=0)
 	{
 		inventory->RemoveItem(itemIdx);
+		return false;
 	};
+	return true;
+}
+
+FRotator UTask_AttackZombie::GetRotationToZombie(FVector zombieLoc)
+{
+	double angle{FMath::RadiansToDegrees(FMath::Atan2(zombieLoc.Y, zombieLoc.X))};
+	return FRotator{0,angle,0};
 }

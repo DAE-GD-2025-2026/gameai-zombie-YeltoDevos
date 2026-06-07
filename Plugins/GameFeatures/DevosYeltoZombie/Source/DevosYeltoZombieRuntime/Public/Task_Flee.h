@@ -20,7 +20,10 @@ public:
 	float radius;
 	
 	UPROPERTY(EditAnywhere, Category = "Blackboard")
-	FBlackboardKeySelector BlackBoardKey;
+	FBlackboardKeySelector FleeTarget;
+	
+	UPROPERTY(EditAnywhere, Category = "Blackboard")
+	float FleeDistance{500.f};
 	
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) override;
 	

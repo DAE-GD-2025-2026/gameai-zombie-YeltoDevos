@@ -21,5 +21,5 @@ public:
 	FBlackboardKeySelector ZombieKey;
 	
 	UPROPERTY(EditAnywhere, Category = "Blackboard")
-	float ShotgunDistance{200.f};
+	float Distance{200.f};
 };
