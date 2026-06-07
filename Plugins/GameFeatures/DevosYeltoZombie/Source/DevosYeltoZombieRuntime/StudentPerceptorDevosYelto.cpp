@@ -1,6 +1,6 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
-#include "StudentPerceptor.h"
+#include "StudentPerceptorDevosYelto.h"
 
 #include <algorithm>
 
@@ -15,24 +15,24 @@
 #include "PurgeZones/PurgeZone.h"
 #include "Village/House/House.h"
 
-UStudentPerceptor::UStudentPerceptor()
+UStudentPerceptorDevosYelto::UStudentPerceptorDevosYelto()
 {
 	PrimaryComponentTick.bCanEverTick = true;
 }
 
-void UStudentPerceptor::BeginPlay()
+void UStudentPerceptorDevosYelto::BeginPlay()
 {
 	Super::BeginPlay();
 	
 	if (auto PerceptionComp = GetOwner()->GetComponentByClass<UAIPerceptionComponent>())
 	{
-		PerceptionComp->OnTargetPerceptionUpdated.AddDynamic(this, &UStudentPerceptor::OnPerceptionUpdated);
+		PerceptionComp->OnTargetPerceptionUpdated.AddDynamic(this, &UStudentPerceptorDevosYelto::OnPerceptionUpdated);
 	}
 	
 
 }
 
-void UStudentPerceptor::OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
+void UStudentPerceptorDevosYelto::OnPerceptionUpdated(AActor* Actor, FAIStimulus Stimulus)
 {
 	GEngine->AddOnScreenDebugMessage(5, 1.f, FColor::Green, 
 	FString::Printf(TEXT("Saw Something!")));

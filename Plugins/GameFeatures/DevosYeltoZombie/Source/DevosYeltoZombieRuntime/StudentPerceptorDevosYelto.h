@@ -10,17 +10,17 @@
 #include "Perception/AISenseConfig_Damage.h"
 #include "Perception/AISense_Damage.h"
 #include "Village/House/House.h"
-#include "StudentPerceptor.generated.h"
+#include "StudentPerceptorDevosYelto.generated.h"
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class DEVOSYELTOZOMBIERUNTIME_API UStudentPerceptor : public UActorComponent
+class DEVOSYELTOZOMBIERUNTIME_API UStudentPerceptorDevosYelto : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this component's properties
-	UStudentPerceptor();
+	UStudentPerceptorDevosYelto();
 	
 	virtual void BeginPlay() override;
 
