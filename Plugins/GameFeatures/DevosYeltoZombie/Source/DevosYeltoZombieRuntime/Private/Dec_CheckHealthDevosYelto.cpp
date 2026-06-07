@@ -1,13 +1,13 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Dec_CheckHealth.h"
+#include "Dec_CheckHealthDevosYelto.h"
 
 #include "AIController.h"
 #include "Survivor/SurvivorPawn.h"
 #include "Common/HealthComponent.h"
 
-bool UDec_CheckHealth::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const
+bool UDec_CheckHealthDevosYelto::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const
 {
 	ASurvivorPawn* survivor = Cast<ASurvivorPawn>(OwnerComp.GetAIOwner()->GetPawn());
 	if (!survivor) return false;

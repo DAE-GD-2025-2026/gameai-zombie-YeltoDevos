@@ -1,14 +1,14 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Dec_DistanceSmallerThan.h"
+#include "Dec_ZombieTypeDevosYelto.h"
 
 #include "AIController.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Zombies/BaseZombie.h"
 #include "Survivor/SurvivorPawn.h"
 
-bool UDec_DistanceSmallerThan::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const
+bool UDec_ZombieTypeDevosYelto::CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const
 {
 	UBlackboardComponent* Blackboard = OwnerComp.GetBlackboardComponent();
 	if (!Blackboard) return false;
@@ -18,11 +18,6 @@ bool UDec_DistanceSmallerThan::CalculateRawConditionValue(UBehaviorTreeComponent
 	
 	ASurvivorPawn* survivor = Cast<ASurvivorPawn>(OwnerComp.GetAIOwner()->GetPawn());
 	if (!survivor) return false;
-	
-	
-	const double distance{ (zombie->GetActorLocation() - survivor->GetActorLocation()).Length() };
-	
-	if (distance < Distance) return true;
 	
 	return false;
 }

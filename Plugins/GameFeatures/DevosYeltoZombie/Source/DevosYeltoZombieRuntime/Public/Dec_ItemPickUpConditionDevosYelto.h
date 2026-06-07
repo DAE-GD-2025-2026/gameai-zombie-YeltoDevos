@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTDecorator.h"
-#include "Dec_ZombieType.generated.h"
+#include "Dec_ItemPickUpConditionDevosYelto.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class DEVOSYELTOZOMBIERUNTIME_API UDec_ZombieType : public UBTDecorator
+class DEVOSYELTOZOMBIERUNTIME_API UDec_ItemPickUpConditionDevosYelto : public UBTDecorator
 {
 	GENERATED_BODY()
 	
@@ -18,5 +18,5 @@ class DEVOSYELTOZOMBIERUNTIME_API UDec_ZombieType : public UBTDecorator
 	
 public:
 	UPROPERTY(EditAnywhere, Category = "Blackboard")
-	FBlackboardKeySelector ZombieKey;
+	FBlackboardKeySelector ItemKey;
 };

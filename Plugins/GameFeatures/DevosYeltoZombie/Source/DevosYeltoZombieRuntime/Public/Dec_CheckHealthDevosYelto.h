@@ -4,15 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "BehaviorTree/BTDecorator.h"
-#include "Dec_CheckEnergy.generated.h"
+#include "Dec_CheckHealthDevosYelto.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class DEVOSYELTOZOMBIERUNTIME_API UDec_CheckEnergy : public UBTDecorator
+class DEVOSYELTOZOMBIERUNTIME_API UDec_CheckHealthDevosYelto : public UBTDecorator
 {
 	GENERATED_BODY()
 	
 	virtual bool CalculateRawConditionValue(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory) const override;
+	
+public:
 };
